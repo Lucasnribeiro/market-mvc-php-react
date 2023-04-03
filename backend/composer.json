@@ -1,0 +1,19 @@
+{
+    "name": "lucasnribeiro/php-framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Framework\\" : "framework",
+            "App\\" : "app"
+        }
+    }
+}
