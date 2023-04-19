@@ -6,16 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Controllers\\Home' => $baseDir . '/app/Controllers/Home.php',
-    'App\\Controllers\\ProductsController' => $baseDir . '/app/Controllers/ProductsController.php',
-    'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
-    'App\\Routes' => $baseDir . '/app/Routes.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'Framework\\Controller\\ApiResource' => $baseDir . '/framework/Controller/ApiResource.php',
-    'Framework\\Controller\\BaseController' => $baseDir . '/framework/Controller/BaseController.php',
-    'Framework\\Error\\ControllerNotFound' => $baseDir . '/framework/Error/ControllerNotFound.php',
-    'Framework\\Error\\Error' => $baseDir . '/framework/Error/Error.php',
-    'Framework\\Model\\BaseModel' => $baseDir . '/framework/Model/BaseModel.php',
-    'Framework\\Request' => $baseDir . '/framework/Request.php',
-    'Framework\\Router' => $baseDir . '/framework/Router.php',
 );

@@ -7,9 +7,44 @@ namespace Composer\Autoload;
 class ComposerStaticInitcbdaf4dd9b1ad93ed3bf63bd69ae7b74
 {
     public static $prefixLengthsPsr4 = array (
+        'h' => 
+        array (
+            'hollodotme\\FastCGI\\' => 19,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Component\\Process\\' => 26,
+        ),
+        'R' => 
+        array (
+            'Riverline\\MultiPartParser\\' => 26,
+        ),
+        'P' => 
+        array (
+            'Psr\\Http\\Server\\' => 16,
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Container\\' => 14,
+        ),
+        'N' => 
+        array (
+            'Nyholm\\Psr7\\' => 12,
+        ),
+        'H' => 
+        array (
+            'Http\\Message\\' => 13,
+        ),
         'F' => 
         array (
             'Framework\\' => 10,
+            'Firebase\\JWT\\' => 13,
+        ),
+        'C' => 
+        array (
+            'Crwlr\\QueryString\\' => 18,
+        ),
+        'B' => 
+        array (
+            'Bref\\' => 5,
         ),
         'A' => 
         array (
@@ -18,9 +53,54 @@ class ComposerStaticInitcbdaf4dd9b1ad93ed3bf63bd69ae7b74
     );
 
     public static $prefixDirsPsr4 = array (
+        'hollodotme\\FastCGI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hollodotme/fast-cgi-client/src',
+        ),
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
+        'Riverline\\MultiPartParser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/riverline/multipart-parser/src',
+        ),
+        'Psr\\Http\\Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-server-handler/src',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Nyholm\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nyholm/psr7/src',
+        ),
+        'Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
+        ),
         'Framework\\' => 
         array (
             0 => __DIR__ . '/../..' . '/framework',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+        'Crwlr\\QueryString\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/crwlr/query-string/src',
+        ),
+        'Bref\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bref/bref/src',
         ),
         'App\\' => 
         array (
@@ -29,18 +109,7 @@ class ComposerStaticInitcbdaf4dd9b1ad93ed3bf63bd69ae7b74
     );
 
     public static $classMap = array (
-        'App\\Controllers\\Home' => __DIR__ . '/../..' . '/app/Controllers/Home.php',
-        'App\\Controllers\\ProductsController' => __DIR__ . '/../..' . '/app/Controllers/ProductsController.php',
-        'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
-        'App\\Routes' => __DIR__ . '/../..' . '/app/Routes.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Framework\\Controller\\ApiResource' => __DIR__ . '/../..' . '/framework/Controller/ApiResource.php',
-        'Framework\\Controller\\BaseController' => __DIR__ . '/../..' . '/framework/Controller/BaseController.php',
-        'Framework\\Error\\ControllerNotFound' => __DIR__ . '/../..' . '/framework/Error/ControllerNotFound.php',
-        'Framework\\Error\\Error' => __DIR__ . '/../..' . '/framework/Error/Error.php',
-        'Framework\\Model\\BaseModel' => __DIR__ . '/../..' . '/framework/Model/BaseModel.php',
-        'Framework\\Request' => __DIR__ . '/../..' . '/framework/Request.php',
-        'Framework\\Router' => __DIR__ . '/../..' . '/framework/Router.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

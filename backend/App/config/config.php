@@ -4,8 +4,8 @@
  * Configuration for: Error reporting
  * Useful to show every little problem during development, but only show hard errors in production
  */
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+// error_reporting(E_ERROR);
+// ini_set("display_errors", 1);
 
 /**
  * Configuration for: Database
@@ -17,3 +17,7 @@ define('DB_NAME', 'market');
 define('DB_USER', 'postgres');
 define('DB_PORT', '5432');
 define('DB_PASS', 'admin');
+
+
+
+define('JWT_KEY', '1290839iasopd90-182i4e9-');

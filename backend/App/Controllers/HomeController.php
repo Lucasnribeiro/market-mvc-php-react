@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Framework\Controller\BaseController;
 
-class Home extends BaseController
+class HomeController extends BaseController
 {
     public function index()
     {

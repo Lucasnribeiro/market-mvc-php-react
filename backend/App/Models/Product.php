@@ -17,7 +17,7 @@ class Product extends BaseModel {
         /**
         * The rows of this table.
         */
-        $this->rows  = ['id', 'name'];
+        $this->rows  = ['id', 'product_type_id', 'name', 'price', 'tax', 'created_at', 'deleted_at'];
 
     }
 }

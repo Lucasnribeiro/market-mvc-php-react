@@ -35,5 +35,6 @@ class ApiResource extends BaseController
     public function response($data){
         header('Content-type: application/json');
         echo json_encode( $data );
+        die();
     }
 }

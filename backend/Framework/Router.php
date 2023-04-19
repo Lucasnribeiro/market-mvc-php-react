@@ -13,7 +13,7 @@ class Router{
 
     private $querystrings;
 
-    private static $middleware;
+    private $middleware;
 
     /**
      * Summary of __construct
@@ -23,11 +23,25 @@ class Router{
 
     }
 
-    public static function get($path, $resolve){
+    public static function get($path, $resolve, $middleware = null){
         self::$routes[] = array(
-            'path' => $path, 
-            'class' => $resolve[0], 
-            'function' => $resolve[1]
+            'path'         => $path, 
+            'class'        => $resolve[0], 
+            'function'     => $resolve[1],
+            'method'       => 'GET',
+            'middleware'   => $middleware
+        );
+
+        return [$path, $resolve];
+    }
+
+    public static function post($path, $resolve, $middleware = null){
+        self::$routes[] = array(
+            'path'          => $path, 
+            'class'         => $resolve[0], 
+            'function'      => $resolve[1],
+            'method'        => 'POST',
+            'middleware'    => $middleware
         );
 
         return [$path, $resolve];
@@ -37,32 +51,25 @@ class Router{
         self::$middleware = new $middleware;
     }
 
-    public static function post($path, $resolve){
-        self::$routes[] = array(
-            'path' => $path, 
-            'class' => $resolve[0], 
-            'function' => $resolve[1]
-        );
-
-        return [$path, $resolve];
-    }
-
     public static function group($group){
         //resolve the middleware
         self::$middleware = new $group['middleware'];
 
     }
 
-    private function callController($class, $function, $args, $querystrings, $data = null){
-
-        if(Router::$middleware !== null){
-            call_user_func([Router::$middleware, 'run']);
-        }
+    private function callController($class, $function, $middleware, $args, $querystrings, $json, $data = null){
+        $this->setRequestHeaders();
 
         $request = new Request();
+
+        if($middleware !== null){
+            call_user_func([$middleware, 'run'], $request);
+        }
+
         $request->params         = $args;
         $request->querystrings   = $querystrings;
         $request->data           = $data;
+        $request->json           = json_decode($json, true);
 
         $controller = new $class;
         
@@ -83,6 +90,13 @@ class Router{
         }
     }
 
+    public function handlePreflight(){
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+            $this->setRequestHeaders();
+            die(); 
+        }
+    }
+
     private function buildURI(){
 
         Routes::routes();
@@ -91,21 +105,34 @@ class Router{
         $querystrings = $this->getQueryStrings();
         $removed_querystrings = preg_replace('/\?.*/', '', $request_uri);
         $url = preg_split('@/@', $removed_querystrings, -1, PREG_SPLIT_NO_EMPTY);
+
+        echo ('hey');
+        // //check if its a preflight request [OPTIONS]
+        // $this->handlePreflight();
         
-        foreach(Routes::$routes as $route => $declared_route){
-            $path = preg_split('@/@', $declared_route['path'], -1, PREG_SPLIT_NO_EMPTY);
-            if(sizeof($path) == sizeof($url)){
-                if($url[0] === $path[0]){
-                    preg_match_all('!{.*?}+!', $declared_route['path'], $params);
-                    $params = preg_replace("/[^a-zA-Z 0-9]+/", "", $params[0] );
-                    $this->callController($declared_route['class'], $declared_route['function'], $params, $querystrings);
-                    //controller found and executed, stop routing execution
-                    die();
-                }
-            }
-        }
+        // foreach(Routes::$routes as $route => $declared_route){
+        //     $path = preg_split('@/@', $declared_route['path'], -1, PREG_SPLIT_NO_EMPTY);
+        //     if(sizeof($path) == sizeof($url)){
+        //         if($url[0] === $path[0] && $_SERVER['REQUEST_METHOD'] === $declared_route['method']){
+        //             preg_match_all('!{.*?}+!', $declared_route['path'], $params);
+        //             $params = preg_replace("/[^a-zA-Z 0-9]+/", "", $params[0] );
+        //             $this->callController($declared_route['class'], $declared_route['function'], $declared_route['middleware'], $params, $querystrings, file_get_contents('php://input'), $_POST );
+        //             //controller found and executed, stop routing execution
+        //             die();
+        //         }
+        //     }
+        // }
+        // $this->setRequestHeaders();
+        // ControllerNotFound::throwError();
 
-        ControllerNotFound::throwError();
+    }
 
+    public function setRequestHeaders(){
+        header("Content-Type: application/json");    
+        header("Access-Control-Allow-Origin: http://localhost:5173");   
+        header('Access-Control-Allow-Credentials: true'); 
+        header("Access-Control-Max-Age: 3600");    
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");  
+        header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS");  
     }
 }
