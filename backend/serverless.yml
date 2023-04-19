@@ -3,6 +3,13 @@ service: app
 provider:
     name: aws
     region: us-east-1
+    environment:
+        AWS_POSTGRES_HOST: ${ssm:/market/postgres_host}
+        AWS_POSTGRES_DB_NAME: ${ssm:/market/postgres_db_name}
+        AWS_POSTGRES_DB_USER: ${ssm:/market/postgres_db_user}
+        AWS_POSTGRES_DB_PASSWORD: ${ssm:/market/postgres_db_password}
+        AWS_JWT_KEY: ${ssm:/market/jwt_key}
+
 
 plugins:
     - ./vendor/bref/bref
