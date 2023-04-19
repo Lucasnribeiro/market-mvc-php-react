@@ -9,6 +9,7 @@ use App\Controllers\ProductTypesController;
 use App\Controllers\SalesController;
 use App\Controllers\UsersController;
 use App\Middlewares\AuthMiddleware;
+use App\Controllers\HomeController;
 use Framework\Router;
 
 class Routes extends Router{
