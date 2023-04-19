@@ -106,24 +106,23 @@ class Router{
         $removed_querystrings = preg_replace('/\?.*/', '', $request_uri);
         $url = preg_split('@/@', $removed_querystrings, -1, PREG_SPLIT_NO_EMPTY);
 
-        echo ('hey');
-        // //check if its a preflight request [OPTIONS]
-        // $this->handlePreflight();
+        //check if its a preflight request [OPTIONS]
+        $this->handlePreflight();
         
-        // foreach(Routes::$routes as $route => $declared_route){
-        //     $path = preg_split('@/@', $declared_route['path'], -1, PREG_SPLIT_NO_EMPTY);
-        //     if(sizeof($path) == sizeof($url)){
-        //         if($url[0] === $path[0] && $_SERVER['REQUEST_METHOD'] === $declared_route['method']){
-        //             preg_match_all('!{.*?}+!', $declared_route['path'], $params);
-        //             $params = preg_replace("/[^a-zA-Z 0-9]+/", "", $params[0] );
-        //             $this->callController($declared_route['class'], $declared_route['function'], $declared_route['middleware'], $params, $querystrings, file_get_contents('php://input'), $_POST );
-        //             //controller found and executed, stop routing execution
-        //             die();
-        //         }
-        //     }
-        // }
-        // $this->setRequestHeaders();
-        // ControllerNotFound::throwError();
+        foreach(Routes::$routes as $route => $declared_route){
+            $path = preg_split('@/@', $declared_route['path'], -1, PREG_SPLIT_NO_EMPTY);
+            if(sizeof($path) == sizeof($url)){
+                if($url[0] === $path[0] && $_SERVER['REQUEST_METHOD'] === $declared_route['method']){
+                    preg_match_all('!{.*?}+!', $declared_route['path'], $params);
+                    $params = preg_replace("/[^a-zA-Z 0-9]+/", "", $params[0] );
+                    $this->callController($declared_route['class'], $declared_route['function'], $declared_route['middleware'], $params, $querystrings, file_get_contents('php://input'), $_POST );
+                    //controller found and executed, stop routing execution
+                    die();
+                }
+            }
+        }
+        $this->setRequestHeaders();
+        ControllerNotFound::throwError();
 
     }
 
