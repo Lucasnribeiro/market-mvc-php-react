@@ -3,11 +3,11 @@
         'name' => 'lucasnribeiro/php-framework',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '08ce9274538b2b0bfe27eeef4f90bcfb26bc51c3',
+        'reference' => '95021174d1b09d7b95578e938e47628871c15df0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => false,
+        'dev' => true,
     ),
     'versions' => array(
         'bref/bref' => array(
@@ -49,7 +49,7 @@
         'lucasnribeiro/php-framework' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '08ce9274538b2b0bfe27eeef4f90bcfb26bc51c3',
+            'reference' => '95021174d1b09d7b95578e938e47628871c15df0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

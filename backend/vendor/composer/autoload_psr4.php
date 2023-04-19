@@ -14,9 +14,9 @@ return array(
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Nyholm\\Psr7\\' => array($vendorDir . '/nyholm/psr7/src'),
     'Http\\Message\\' => array($vendorDir . '/php-http/message-factory/src'),
-    'Framework\\' => array($baseDir . '/Framework'),
+    'Framework\\' => array($baseDir . '/framework'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Crwlr\\QueryString\\' => array($vendorDir . '/crwlr/query-string/src'),
     'Bref\\' => array($vendorDir . '/bref/bref/src'),
-    'App\\' => array($baseDir . '/App'),
+    'App\\' => array($baseDir . '/app'),
 );

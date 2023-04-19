@@ -1,7 +1,5 @@
 <?php
-namespace Framework;
 require __DIR__.'/vendor/autoload.php';
-
 use Framework\Router;
 
 // set a constant that holds the project's folder path, like "/var/www/".
