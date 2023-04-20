@@ -61,7 +61,6 @@ composer dump-autoload
 Para rodar a API o comando php -S localhost:8000 dentro da pasta backend é suficiente. **Atenção!** é necessário alterar os valores de conexão com o banco em **backend/App/config/config.php**
 
 Para instalar o projeto react:
-Para instalar a API, é necessário rodar os comandos:
 
 ```
 npm install
