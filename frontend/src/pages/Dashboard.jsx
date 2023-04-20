@@ -18,13 +18,13 @@ export default function Dashboard({}){
                     </Link>
                 </Col>
                 <Col>
-                    <StatCard value={30} title={'Clientes'} />
+
                 </Col>
                 <Col>
-                    <StatCard value={7} title={'Funcionários'} />
+
                 </Col>
                 <Col>
-                    <StatCard value={3} title={'Escritórios'} />
+
                 </Col>
             </Row>
         </>
