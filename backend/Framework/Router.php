@@ -20,7 +20,6 @@ class Router{
      */
     public function __construct(){
         $this->buildURI();
-
     }
 
     public static function get($path, $resolve, $middleware = null){
@@ -127,8 +126,12 @@ class Router{
     }
 
     public function setRequestHeaders(){
-        header("Content-Type: application/json");    
-        header("Access-Control-Allow-Origin: http://localhost:5173");   
+        header("Content-Type: application/json");  
+        $http_origin = $_SERVER['HTTP_ORIGIN']; 
+        if (in_array($http_origin, CORS_ALLOWED_ORIGINS)){  
+            $index = array_search($http_origin, CORS_ALLOWED_ORIGINS);
+            header("Access-Control-Allow-Origin: ". CORS_ALLOWED_ORIGINS[$index]);
+        }
         header('Access-Control-Allow-Credentials: true'); 
         header("Access-Control-Max-Age: 3600");    
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");  

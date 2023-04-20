@@ -19,7 +19,7 @@ CREATE TABLE products(
    id serial PRIMARY KEY,
    product_type_id INT,
    name VARCHAR ( 50 ) NOT NULL,
-   image name VARCHAR ( 255 ),
+   image VARCHAR ( 255 ),
    price VARCHAR ( 50 ) NOT NULL,
    tax VARCHAR ( 50 ) NOT NULL,
    created_at TIMESTAMP NOT NULL,
@@ -31,20 +31,27 @@ CREATE TABLE products(
 
 CREATE TABLE sales(
    id serial PRIMARY KEY,
-   value VARCHAR ( 50 ) NOT NULL,
+   user_id INT,
    tax VARCHAR ( 50 ) NOT NULL,
    total VARCHAR ( 50 ) NOT NULL,
    created_at TIMESTAMP NOT NULL,
-   deleted_at TIMESTAMP NULL
+   deleted_at TIMESTAMP NULL,
+   constraint fk_user_id
+   	foreign KEY(user_id)
+   		references users(id)
 );
 
 
 CREATE TABLE sale_products(
    id serial PRIMARY KEY,
    sale_id INT,
+   user_id INT,
    product_id INT,
    created_at TIMESTAMP NOT NULL,
    deleted_at TIMESTAMP NULL,
+   constraint fk_user_id
+   	foreign KEY(user_id)
+   		references users(id)
    constraint fk_product_id
    	foreign KEY(product_id)
    		references products(id),
