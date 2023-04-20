@@ -79,6 +79,7 @@ No projeto, você pode notar que existe um pacote no composer.json chamado Bref.
 O front-end subi em bucket S3 como um site estático. Existe um comando deploy dentro do package.json que sobe para a AWS a build do Vite.
 
 http://market-react.s3-website-us-east-1.amazonaws.com/
+
 ![Página de login](https://i.imgur.com/xNmml4j.png)
 ![enter image description here](https://i.imgur.com/TcS4d4Z.png)
 ![enter image description here](https://i.imgur.com/lCpJXNU.png)
