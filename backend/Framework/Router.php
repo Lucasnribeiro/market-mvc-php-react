@@ -22,28 +22,24 @@ class Router{
         $this->buildURI();
     }
 
-    public static function get($path, $resolve, $middleware = null){
+    private static function register(string $method, $path, $resolve, $middleware) {
         self::$routes[] = array(
             'path'         => $path, 
             'class'        => $resolve[0], 
             'function'     => $resolve[1],
-            'method'       => 'GET',
+            'method'       => $method,
             'middleware'   => $middleware
         );
 
         return [$path, $resolve];
     }
+    
+    public static function get($path, $resolve, $middleware = null){
+        return $this->register('GET', $path, $resolve, $middleware);
+    }
 
     public static function post($path, $resolve, $middleware = null){
-        self::$routes[] = array(
-            'path'          => $path, 
-            'class'         => $resolve[0], 
-            'function'      => $resolve[1],
-            'method'        => 'POST',
-            'middleware'    => $middleware
-        );
-
-        return [$path, $resolve];
+        return this->register('POST', $path, $resolve, $middleware);
     }
 
     public function middleware($middleware){
