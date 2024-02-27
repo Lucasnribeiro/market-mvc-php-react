@@ -22,7 +22,7 @@ class Router{
         $this->buildURI();
     }
 
-    private function register(string $method, $path, $resolve, $middleware) {
+    private static function register(string $method, $path, $resolve, $middleware) {
         self::$routes[] = array(
             'path'         => $path, 
             'class'        => $resolve[0], 
